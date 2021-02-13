@@ -1,0 +1,40 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides: slim
+# Required-Start: $local_fs $all
+# Required-Stop:
+# Default-Start: 2345
+# Default-Stop:
+# Short-Description: SLiM login manager
+# Description: SLiM login manager
+###END INIT INFO
+
+# Source function library
+. /etc/rc.d/init.d/functions
+
+start()
+{
+	echo "starting SLiM..."
+	slim &
+	echo "done"
+}
+stop()
+{
+	echo "stopping SLiM..."
+	killall -q slim
+	echo "done"
+}
+status()
+{
+	echo "idk"
+}
+if [[ "${1}" == "start" ]]; then
+	start
+fi
+if [[ "${1}" == "stop" ]]; then
+	stop
+fi
+if [[ "${1}" == "status" ]]; then
+	status
+fi
+exit $?
